@@ -214,7 +214,662 @@ At a basic level, playbooks can be used to manage configurations of and deployme
 187,What is a merge?, merging takes the contents of a source branch and integrates them with a target branch.,Version Control,https://www.freecodecamp.org/news/an-introduction-to-git-merge-and-rebase-what-they-are-and-how-to-use-them-131b863785f/,
 188,What is a merge conflict?,A merge conflict is an event that takes place when Git is unable to automatically resolve differences in code between two commits. Git can merge the changes automatically only if the commits are on different lines or branches.,Version Control,"https://www.simplilearn.com/tutorials/git-tutorial/merge-conflicts-in-git#:~:text=A%20merge%20conflict%20is%20an,on%20different%20lines%20or%20branches.",
 189,,,,,
-190,,,,,
+190Tell me about your recent project.
+ Currently I am working on a project building a platform for an e-commerce company using
+ Terraform, I am building ECS to orchestrate docker containers stored in ECR. We are using
+ Jenkins for our CICD, we have Jenkinsfile that runs our pipelines.
+ What is Continuous Integration?
+ It is development practice where developers integrate code into a shared repository
+ frequently. It can range from a couple of changes every day or a week to a couple of
+ changes in one hour in larger scales.
+ Each piece of code (change/patch) is verified, to make sure the change is safe to
+ merge. Today, it's a common practice to test the change using an automated build
+ that makes sure the code can be integrated. It can be one build which runs several
+ tests in different levels (unit, functional, etc.) or several separate builds that all or
+ some has to pass in order for the change to be merged into the repository.
+ What is Continuous Deployment?
+ A development strategy used by developers to release software automatically into
+ production where any code commit must pass through an automated testing phase.
+ Only when this is successful is the release considered production worthy. This
+ eliminates any human interaction and should be implemented only after
+ production-ready pipelines have been set with real-time monitoring and reporting of
+ deployed assets. If any issues are detected in production it should be easy to
+ rollback to previous working state.
+ What is AWS Fargate?
+ Amazon definition: "AWS Fargate is a serverless compute engine for containers that
+ works with both Amazon Elastic Container Service (ECS) and Amazon Elastic
+ Kubernetes Service (EKS).”
+ What is Amazon ECR?
+ Amazon definition: "Amazon Elastic Container Registry (ECR) is a fully-managed
+ Docker container registry that makes it easy for developers to store, manage, and
+ deploy Docker container images."
+ What is Amazon ECS?
+ Amazon definition: "Amazon Elastic Container Service (Amazon ECS) is a fully
+ managed container orchestration service. Customers such as Duolingo, Samsung,
+ GE, and Cook Pad use ECS to run their most sensitive and mission critical
+ applications because of its security, reliability, and scalability."
+What’s DNS?
+ A DNS service such as Amazon Route 53 is a globally distributed service that translates human
+ readable names like www.example.com into the numeric IP addresses like 192.0.2.1 that
+ computers use to connect to each other. The Internet’s DNS system works much like a phone
+ book by managing the mapping between names and numbers. DNS servers translate requests
+ for names into IP addresses, controlling which server an end user will reach when they type a
+ domain name into their web browser. These requests are called queries.
+ Types of DNS Service:
+ Authoritative DNS: An authoritative DNS service provides an update mechanism that
+ developers use to manage their public DNS names.
+ Recursive DNS: Clients typically do not make queries directly to authoritative DNS services.
+ Instead, they generally connect to another type of DNS service known a resolver, or a recursive
+ DNS service.
+ What is TLS vs SSL?
+ SSL refers to Secure Sockets Layer whereas TLS refers to Transport Layer Security.
+ Basically, they are one and the same, but, entirely different. How similar both are?
+ SSL and TLS are cryptographic protocols that authenticate data transfer between
+ servers, systems, applications and users.
+ Does TLS mean HTTPS?
+ In HTTPS, the communication protocol is encrypted using Transport Layer Security (TLS) or,
+ formerly, Secure Sockets Layer (SSL). The protocol is therefore also referred to as HTTP over
+ TLS, or HTTP over SSL.
+ What is a Route?
+ A route is exposing a service by giving it hostname which is externally reachable
+ What is AWS CloudTrail?
+ AWS definition: "AWS CloudTrail is a service that enables governance, compliance,
+ operational auditing, and risk auditing of your AWS account."
+ What is AWS CloudWatch?
+ AWS definition: "Amazon CloudWatch is a monitoring and observability service..."
+ What is Route 53?
+ "Amazon Route 53 is a highly available and scalable cloud Domain Name System
+ (DNS) web service..." Some of Route 53 features:
+● Register domain
+ ● DNS service - domain name translations
+ ● Health checks - verify your app is available
+ What is AWS ACM?
+ Amazon definition: "AWS Certificate Manager is a service that lets you easily
+ provision, manage, and deploy public and private Secure Sockets Layer/Transport
+ Layer Security (SSL/TLS) certificates for use with AWS services and your internal
+ connected resources."
+ What is blue green deployment?
+ Blue/Green deployments are a form of progressive delivery where a new version of
+ the application is deployed while the old version still exists. The two versions coexist
+ for a brief period of time while user traffic is routed to the new version, before the old
+ version is discarded (if all goes well).
+ What is Canary deployment vs blue Green?
+ Canary deployment works similarly to blue-green deployment, but uses a
+ slightly different method. Instead of another full environment waiting to be
+ switched over once deployment is finished, canary deployments cut over
+ just a small subset of servers or nodes first, before finishing the others.
+ Terraform.
+ What terraform.tfstate file is used for?
+ It keeps track of the IDs of created resources so that Terraform knows what it's
+ managing.
+ What is Terraform import?
+ Terraform import is used to import existing infrastucture. It allows you to bring
+ resources created by some other means (eg. manually launched cloud resources)
+ and bring it under Terraform management.
+ Explain "State Locking"
+State locking is a mechanism that blocks an operations against a specific state file
+ from multiple callers so as to avoid conflicting operations from different team
+ members. Once the first caller's operation's lock is released the other team member
+ may go ahead to carry out his own operation. Nevertheless Terraform will first check
+ the state file to see if the desired resource already exist and if not it goes ahead to
+ create it.
+ Explain Terraform Modules
+ A Terraform module is a set of Terraform configuration files in a single directory.
+ Modules are small, reusable Terraform configurations that let you manage a group
+ of related resources as if they were a single resource. Even a simple configuration
+ consisting of a single directory with one or more .tf files is a module. When you run
+ Terraform commands directly from such a directory, it is considered the root
+ module. So in this sense, every Terraform configuration is part of a module.
+ What are " Terraform Provisioners"? What they are used for?
+ Provisioners used to execute actions on local or remote machine. It's extremely
+ useful in case you provisioned an instance and you want to make a couple of
+ changes in the machine you've created without manually ssh into it after Terraform
+ f
+ inished to run and manually run them.
+ What is a "tainted resource"?
+ It's a resource which was successfully created but failed during provisioning.
+ Terraform will fail and mark this resource as "tainted".
+ What are Input Variables in Terraform? Why one should use them?
+ Input variables serve as parameters to the module in Terraform. They allow you for
+ example to define once the value of a variable and use that variable in different
+ places in the module so next time you would want to change the value, you will
+ change it in one place instead of changing the value in different places in the
+ module.
+ Explain what is a "provider".
+ "Terraform relies on plugins called "providers" to interact with cloud providers, SaaS
+ providers, and other APIs...Each provider adds a set of resource types and/or data
+ sources that Terraform can manage. Every resource type is implemented by a
+ provider; without providers, Terraform can't manage any kind of infrastructure."
+ Docker.
+ What is Dockerfile?
+Docker can build images automatically by reading the instructions from a Dockerfile.
+ A Dockerfile is a text document that contains all the commands a user could call on
+ the command line to assemble an image.
+ What is the difference between ADD and COPY in Dockerfile?
+ COPY takes in a src and destination. It only lets you copy in a local file or directory
+ from your host (the machine building the Docker image) into the Docker image itself.
+ ADD lets you do that too, but it also supports 2 other sources. First, you can use a
+ URL instead of a local file / directory. Secondly, you can extract a tar file from the
+ source directly into the destination. Although ADD and COPY are functionally
+ similar, generally speaking, COPY is preferred. That’s because it’s more transparent
+ than ADD. COPY only supports the basic copying of local files into the container,
+ while ADD has some features (like local-only tar extraction and remote URL support)
+ that are not immediately obvious.
+ What is the difference between CMD and RUN in Dockerfile?
+ RUN lets you execute commands inside of your Docker image. These commands
+ get executed once at build time and get written into your Docker image as a new
+ layer. CMD is the command the container executes by default when you launch the
+ built image. A Dockerfile can only have one CMD. You could say that CMD is a
+ Docker run-time operation, meaning it’s not something that gets executed at build
+ time. It happens when you run an image. A running image is called a container.
+ What’s the meaning of FROM on a Dockerfile?
+ “From” command on a dockerfile is used to get the base image for the docker file. Example
+ of a base ubuntu, alpine ect
+ What is Docker Hub?
+ This is used to store Docker images
+ How are containers different from virtual machines (VMs)?
+ The primary difference between containers and VMs is that containers allow you to
+ virtualize multiple workloads on the operating system while in the case of VMs the
+ hardware is being virtualized to run multiple machines each with its own OS. You
+ can also think about it as containers are for OS-level virtualization while VMs are for
+ hardware virtualization.
+ ● Containers don't require an entire guest operating system as VMs.
+ Containers share the system's kernel as opposed to VMs. They isolate
+ themselves via the use of namespaces and cgroups
+● It usually takes a few seconds to set up a container as opposed to VMs
+ which can take minutes or at least more time than containers as there is an
+ entire OS to boot and initialize as opposed to containers which has share of
+ the underlying OS
+ ● Virtual machines considered to be more secured than containers
+ How do you run a container?
+ docker run
+ What is IAM?
+ AWS Identity and Access Management (IAM) is a web service that helps you securely
+ control access to AWS resources. You use IAM to control who is authenticated (signed in)
+ and authorized (has permissions) to use resources.
+ What are some of the features of IAM?
+ Features:
+ 1. Shared access to your AWS account
+ 2. Granular permissions
+ 3. Secure access to AWS resources for applications that run on Amazon EC2
+ 4. Multi-factor authentication (MFA)
+ 5. Identity federation
+ 6. Identity information for assurance
+ 7. PCI DSS Compliance
+ 8. Integrated with many AWS services
+ 9. Eventually Consistent
+ A user is unable to access an s3 bucket. What might be the problem?
+ The problem might be:
+ 1. That the IAM permissions boundaries does not allow access to the S3 bucket
+ 2. That the bucket's Amazon S3 Block Public Access settings is not allowing them to
+ access
+ 3. It can also be user credentials issue
+ 4. that the Amazon VPC endpoint policy does not includes the correct permissions to
+ access your S3 buckets and objects
+ 5.
+ What are Security Groups?
+ A security group acts as a virtual firewall, controlling the traffic that is allowed to
+ reach and leave the resources that it is associated with. For example, after you
+ associate a security group with an EC2 instance, it controls the inbound and
+ outbound traffic for the instance.
+ Explain stateless vs. stateful?
+ Stateful: This means any changes applied to an incoming rule will be automatically applied to
+ the outgoing rule. Example: If you allow an incoming port 80, the outgoing port 80 will be
+ automatically opened. Stateless: This means any changes applied to an incoming rule will not
+ be applied to the outgoing rule.
+What is EBS?
+ Amazon Elastic Block Store provides raw block-level storage that can be attached to Amazon
+ EC2 instances and is used by Amazon Relational Database Service. It is one of the two
+ block-storage options offered by AWS, with the other being the EC2 Instance Store
+ How to migrate an instance to another availability zone?
+ It's not possible to move an existing instance to another subnet, Availability Zone, or VPC.
+ Instead, you can manually migrate the instance by creating a new Amazon Machine Image
+ (AMI) from the source instance. Then, launch a new instance using the new AMI in the
+ desired subnet, Availability Zone, or VPC
+ What can you attach to an EC2 instance in order to store data?
+ EBS is block store which is separately attached to EC2 to store data
+ What is Amazon ECS?
+ Amazon Elastic Container Service (Amazon ECS) is a highly scalable and fast container
+ management service. You can use it to run, stop, and manage containers on a cluster. With
+ Amazon ECS, your containers are defined in a task definition that you use to run an
+ individual task or task within a service
+ Explain what is AWS S3?
+ Amazon Simple Storage Service (Amazon S3) is an object storage service that offers
+ industry-leading scalability, data availability, security, and performance. Customers of all
+ sizes and industries can use Amazon S3 to store and protect any amount of data for a range of
+ use cases, such as data lakes, websites, mobile apps etc
+ What is s3 bucket?
+ A bucket is a container for objects stored in Amazon S3. You can store any number of objects
+ in a bucket and can have up to 100 buckets in your account.
+ What is a storage class?
+ S3 storage classes are purpose-built to provide the lowest cost storage for different access
+ patterns. S3 storage classes are ideal for virtually any use case, including those with
+ demanding performance needs, data residency requirements, unknown or changing access
+ patterns, or archival storage.
+ What storage classes are there in S3?
+ 1. S3 Standard (S3 Standard)
+ 2. S3 Intelligent-Tiering (S3 Intelligent-Tiering)
+ 3. Standard-Infrequent Access (S3 Standard-IA)
+ 4. S3 One Zone-Infrequent Access (S3 One Zone-IA)
+ 5. S3 Glacier Instant Retrieval
+ 6. Glacier Flexible Retrieval (Formerly S3 Glacier)
+ Explain what is CloudFront?
+ Amazon CloudFront is a web service that speeds up distribution of your static and
+ dynamic web content, such as . html, . css, . js, and image files, to your users.
+CloudFront delivers your content through a worldwide network of data centers called
+ edge locations.
+ What is "infrastructure as code"?
+ Infrastructure as Code (IaC) is the managing and provisioning of infrastructure through code
+ instead of through manual processes. With IaC, configuration files are created that contain
+ your infrastructure specifications, which makes it easier to edit and distribute configurations.
+ What implementation of IAC are you familiar with?
+ Terraform
+ What benefits infrastructure-as-code has?
+ 1. Cost reduction
+ 2. Speed
+ 3. Reduced risk
+ 4. Test
+ 5. Stable and scalable environments
+ 6. Accountability
+ 7. Configuration consistency
+ 8. Documentation
+ 9. Enhanced security
+ What is ELB (Elastic Load Balancing)?
+ Elastic Load Balancing (ELB) automatically distributes incoming application traffic across
+ multiple targets and virtual appliances in one or more Availability Zones (AZs).
+ What are the different source for AMIs?
+ 1. from amazon
+ 2. your own
+ 3. community
+ What is the shared responsibility model?
+ A shared responsibility model is a cloud security framework that dictates the security
+ obligations of a cloud computing provider and its users to ensure accountability.
+ What AWS is responsible for and what the user is responsible for based on the shared
+ responsibility model?
+ AWS responsibility “Security of the Cloud” - AWS is responsible for protecting the
+ infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure is
+ composed of the hardware, software, networking, and facilities that run AWS Cloud services.
+ Customer responsibility “Security in the Cloud” – Customer responsibility will be determined
+ by the AWS Cloud services that a customer selects. This determines the amount of
+ configuration work the customer must perform as part of their security responsibilities.
+ What is AWS Artifact?
+ AWS Artifact is your go-to, central resource for compliance-related information that
+ matters to you. It provides on-demand access to AWS' security and compliance
+ reports and select online agreements.
+What is AWS Inspector?
+ Amazon Inspector is an automated vulnerability management service that continually scans
+ AWS workloads for software vulnerabilities and unintended network exposure.
+ What is AWS Guarduty?
+ Amazon GuardDuty is a threat detection service that continuously monitors your AWS
+ accounts and workloads for malicious activity and delivers detailed security findings for
+ visibility and remediation
+ What is AWS Shield?
+ AWS Shield is a managed Distributed Denial of Service (DDoS) protection service
+ that safeguards applications running on AWS. AWS Shield provides always-on
+ detection and automatic inline mitigations that minimize application downtime and
+ latency, so there is no need to engage AWS Support to benefit from DDoS
+ protection.
+ What is AWS WAF?
+ AWS WAF is a web application firewall that helps protect your web applications or APIs
+ against common web exploits and bots that may affect availability, compromise security, or
+ consume excessive resources.
+ Give an example of how WAF can used and describe what resources or services you can
+ use it with
+ AWS WAF protects web applications from attacks by filtering traffic based on rules that you
+ create. For example, you can filter any part of the web request, such as IP addresses, HTTP
+ headers, HTTP body, or URI strings. This allows you to block common attack patterns, such
+ as SQL injection or cross-site scripting.
+ What is AWS Key Management Service (KMS)?
+ AWS KMS is a secure and resilient service that uses hardware security modules that have
+ been validated under FIPS 140-2, or are in the process of being validated, to protect your
+ keys.
+ True or False? A user is not allowed to perform penetration testing on any of the AWS
+ services.
+ TRUE
+ What is AWS RDS?
+ Amazon Relational Database Service (RDS) is a managed SQL database service
+ provided by Amazon Web Services (AWS). Amazon RDS supports an array of
+ database engines to store and organize data. It also helps with relational database
+ management tasks, such as data migration, backup, recovery and patching
+ What is AWS DynamoDB?
+ Amazon DynamoDB is a fully managed proprietary NoSQL database service that supports
+ key–value and document data structures
+What is DynamoDB Accelerator?
+ Amazon DynamoDB Accelerator (DAX) is a fully managed, highly available, in-memory
+ cache for Amazon DynamoDB that delivers up to a 10 times performance
+ improvement—from milliseconds to microseconds—even at millions of requests per second
+ What is AWS ElastiCache? For what cases is it used?
+ Amazon ElastiCache is a web service that makes it easy to set up, manage, and scale a
+ distributed in-memory data store or cache environment in the cloud. It provides a
+ high-performance, scalable, and cost-effective caching solution.
+ Explain Amazon RDS Read Replicas?
+ Amazon ElastiCache for Redis is a great choice for real-time transactional and analytical
+ processing use cases such as caching, chat/messaging, gaming leaderboards, geospatial,
+ machine learning, media streaming, queues, real-time analytics, and session store.
+ What is VPC?
+ A virtual private cloud is an on-demand configurable pool of shared resources allocated within a
+ public cloud environment, providing a certain level of isolation between the different
+ organizations using the resources.
+ A VPC is a virtual network that closes resembles a traditional network that you'd operate in
+ your own data center. After you create a VPC, you can add subnets.
+ True or False? VPC spans multiple regions?
+ False.
+ True or False? Subnets belong to the same VPC but can be in
+ different availability zones.
+ FALSE. Every subnet can only be associated with only one Availability Zone.
+ What is an Internet Gateway?
+ An internet gateway enables resources (like EC2 instances) in your public subnets to connect
+ to the internet if the resource has a public IPv4 address or an IPv6 address.
+ True or False? NACL allow or deny traffic on the subnet
+ level?
+ TRUE
+ What is VPC peering?
+ A VPC peering connection is a networking connection between two VPCs that enables you to
+ route traffic between them using private IPv4 addresses or IPv6 addresses.
+ True or False? Multiple Internet Gateways can be
+ attached to one VPC?
+ FALSE.
+ Each VPC can have only one Internet Gateway. Each Internet Gateway can be attached to
+ only one VPC. If there is no Internet Gateway attached to a VPC, then the VPC will not have
+ any connectivity with the Internet. This can be useful for 'internal' applications, such as Dev
+ and Test.
+ What is an Elastic IP address?
+An Elastic IP address is a reserved public IP address that you can assign to any EC2
+ instance in a particular region, until you choose to release it.
+ True or False? Route Tables used to allow or deny traffic from the internet.
+ FALSE
+ Your VPC has an implicit router, and you use route tables to control where network traffic is
+ directed.
+ Explain Security Groups and Network ACLs.
+ Security Groups Operates at the instance level whereas Network ACLs operates at the subnet
+ level
+ What is AWS Direct Connect?
+ AWS Direct Connect is a network service that provides an alternative to using the
+ Internet to utilize AWS cloud services. AWS Direct Connect enables customers to
+ have low latency, secure and private connections to AWS for workloads which
+ require higher speed or lower latency than the internet.
+ Explain agile software development?
+ Agile is an iterative approach to project management and software development that helps
+ teams deliver value to their customers faster and with fewer headaches. Instead of betting
+ everything on a "big bang" launch, an agile team delivers work in small, but consumable,
+ increments.
+ AWS Disaster Recovery.
+ In regards to disaster recovery, what is RTO and RPO?
+ These are the Recovery Time Objective (RTO) and Recovery Point Objective (RPO). RTO is
+ the goal your organization sets for the maximum length of time it should take to restore
+ normal operations following an outage or data loss. RPO is your goal for the maximum
+ amount of data the organization can tolerate losing
+ What types of disaster recovery techniques AWS supports?
+ 1. Backup and restore
+ 2. Pilot light
+ 3. Warm standby
+ 4. Multi-site active/active
+ AWS - Identify the service or tool.
+ What would you use for automating code/software deployments?
+ Jenkins, Code Deploy
+ What would you use for easily creating similar AWS
+ environments/resources for different customers?
+ Code deploy and Code Commit
+ Using which service, can you add user sign-up, sign-in
+ and access control to mobile and web apps?
+ Amazon Cognito
+ Which service would you use for building a website or web application?
+AWS Elastic Beanstalk, S3
+ Which tool would you use for choosing between Reserved instances or On-Demand
+ instances?
+ What would you use to check how many unassociated Elastic IP address you have?
+ VPC dashboard then under Virtual Private Cloud section, choose Elastic IPs.
+ Which service allows you to transfer large amounts (Petabytes) of data in and out of the
+ AWS cloud?
+ Snowball
+ Which service would you use if you need a data warehouse?
+ Snowball
+ Which service provides a virtual network dedicated to your AWS account?
+ Amazon Virtual Private Cloud (Amazon VPC)
+ What you would use for having automated backups for an application that has MySQL
+ database layer?
+ What would you use to migrate on-premise database to AWS?
+ AWS Database Migration Service (AWS DMS)
+ What would you use to check why certain EC2 instances
+ were terminated?
+ Choose Event history. Select Event Name in the Filter dropdown list, and then enter
+ TerminateInstances to view all instance termination API calls
+ What would you use for SQL database?
+ Amazon RDS
+ What would you use for NoSQL database?
+ Dynamo DB
+ What would you use for adding image and video analysis to your application?
+ Amazon Rekognition
+ Which service would you use for debugging and improving performances issues with
+ your applications?
+ Cloudwatch and Amazon X-ray
+ Which service is used for sending notifications?
+ Amazon SNS
+ What would you use for running SQL queries interactively on S3?
+ Amazon Athena
+ What would you use for preparing and combining data for analytics or ML?
+AWS Glue
+ Which service would you use for monitoring malicious activity and unauthorized
+ behavior in regards to AWS accounts and workloads?
+ Amazon GuardDuty.
+ Which service would you use for centrally manage billing, control access, compliance,
+ and security across multiple AWS accounts?
+ AWS Control Tower.
+ Which service would you use for web application protection?
+ AWS WAF.
+ You would like to monitor some of your resources in the different services. Which
+ service would you use for that?
+ Amazon CloudWatch.
+ Which service would you use for performing security assessment?
+ Which service would you use for creating DNS record?
+ Route 53.
+ What would you use if you need a fully managed document database?
+ Amazon DocumentDB
+ Which service would you use to add access control (or sign-up, sign-in forms) to your
+ web/mobile apps?
+ Amazon Cognito
+ Which service would you use if you need a messaging queue?
+ Amazon Simple Queue Service (SQS)
+ Which service would you use if you need managed DDOS protection?
+ AWS Shield
+ Which service would you use if you need to store frequently used data for low latency
+ access?
+ Amazon S3 or EBS volumes
+ What would you use to transfer files over long distances between a client and an S3
+ bucket?
+ Amazon S3 Transfer Acceleration
+ Which service would you use for distributing incoming requests across multiple
+ resources?
+ Load balancer
+ Which services are involved in getting a custom string (based on the input) when
+ inserting a URL in the browser?
+Which service would you use for data or events streaming?
+ Amazon Kinesis
+ AWS DNS.
+ What is Route 53?
+ Amazon Route 53 is a highly available and scalable cloud domain name system (DNS)
+ service.
+ AWS Monitoring & Logging.
+ What is AWS CloudWatch?
+ Amazon CloudWatch is a monitoring and management service that provides data and
+ actionable insights for AWS, hybrid, and on-premises applications and infrastructure
+ resources
+ What is AWS CloudTrail?
+ AWS CloudTrail enables auditing, security monitoring, and operational troubleshooting by
+ tracking user activity and API usage. CloudTrail logs, continuously monitors, and retains
+ account activity related to actions across your AWS infrastructure, giving you control over
+ storage, analysis, and remediation actions.
+ What is Simply Notification Service?
+ Amazon Simple Notification Service (Amazon SNS) is a fully managed messaging service
+ for both application-to-application (A2A) and application-to-person (A2P) communication.
+ Explain the following in regards to SNS:
+ • Topics : An SNS topic is a communication channel to which you can add subscribers and then
+ publish messages to all of those subscribers.
+ • Subscribers: Subscribers are clients interested in receiving notifications from topics of
+ interest; they can subscribe to a topic or be subscribed by the topic owner.
+ • Publishers: Publishers communicate asynchronously with subscribers by sending messages
+ to a topic.
+ AWS Billing & Support.
+ What is AWS Organizations?
+ AWS Organizations is an account management service that enables you to consolidate
+ multiple AWS accounts into an organization that you create and centrally manage.
+ What are Service Control Policies and to what service they belong?
+ Service control policies (SCPs) are a type of organization policy that you can use to manage
+ permissions in your organization.
+ Explain AWS pricing model.
+ AWS offers you a pay-as-you-go approach for pricing for over 200 cloud services. With AWS
+ you pay only for the individual services you need, for as long as you use them, and without
+ requiring long-term contracts or complex licensing.
+ How one should estimate AWS costs when for example comparing to on-premise
+ solutions?
+To estimate a bill, use the AWS Pricing Calculator.
+ What basic support in AWS includes?
+ How are EC2 instances billed?
+ Your Amazon EC2 usage is calculated by either the hour or the second based on the size of
+ the instance, operating system, and the AWS Region.
+ True or False? Region is a factor when it comes to EC2
+ costs/pricing? TRUE.
+ What is "AWS Infrastructure Event Management"?
+ AWS Infrastructure Event Management (IEM) offers architecture and scaling guidance and
+ operational support during the preparation and execution of planned events, such as shopping
+ holidays, product launches, and migrations.
+ AWS Automation
+ What is AWS CodeDeploy?
+ AWS CodeDeploy is a service that automates code deployments to any instance, including
+ Amazon EC2 instances and instances running on-premises.
+ Explain what is CloudFormation?
+ AWS CloudFormation is a service that gives developers and businesses an easy way to create
+ a collection of related AWS and third-party resources, and provision and manage them in an
+ orderly and predictable fashion.
+ AWS - Misc
+ Which AWS service you have experience with that you think is not very common?
+ What is AWS?
+ AWS is a cloud computing service that Amazon offers to companies around the world.
+ Developers use AWS for building, testing and deploying apps and services. One of the
+ benefits of AWS is the stability it provides.
+ CloudSearch?What is AWS Lightsail?
+ What is AWS Rekognition?
+ What AWS Resource Groups used for?
+ What is AWS Global Accelerator?
+ What is AWS Config?
+ What is AWS X-Ray?
+ What is AWS OpsWorks?
+ What is AWS Athena?
+ What is Amazon Cloud Directory?
+ What is AWS Elastic Beanstalk?
+ What is AWS SWF?
+ What is AWS EMR?
+What is AWS Quick Starts?
+ What is the Trusted Advisor?
+ What is AWS Service Catalog?
+ What is AWS CAF?
+ What is AWS Cloud9?
+ What is AWS Application Discovery Service?
+ What is the AWS well-architected framework and what
+ pillars it's based on?
+ What AWS services are serverless (or have the option to
+ be serverless)?
+ What is Simple Queue Service (SQS)?
+ Network
+ What is TCP/IP?
+ What is SSL and TLS?
+ What is NAT?
+ What is a proxy? How does it works?
+ What is the difference between HTTPS and HTTP?
+ What is TCP? How does it works?
+ How does SSL handshake work?
+ What is the difference between TCP and UDP?
+ What TCP/IP protocols are you familiar with? Explain
+ "default gateway"
+ Containers
+ What is a Container? What is it used for?
+ How are containers different from virtual machines
+ (VMs)?In which scenarios would you use containers and
+ in which you would prefer to use VMs?
+ How container achieve isolation from the rest of the
+ system?
+ Describe in detail what happens when you run `docker
+ pull image?
+ How do you run a container?
+ docker run.
+ How would you transfer data from one container into another?
+What happens to data of the container when a container exists?
+ Explain what each of the following commands do:
+ • docker run
+ • docker rm
+ • docker ps
+ • docker pull
+ • docker build
+ • docker commit
+ How do you remove old, non running, containers?
+ Dockerfile
+ What is Dockerfile
+ What is the difference between ADD and COPY in
+ Dockerfile?
+ What is the difference between CMD and RUN in
+ Dockerfile?
+ Explain what is Docker compose and what is it used for?
+ Docker images?
+ What is Docker Hub?
+ What is the difference between Docker Hub and Docker
+ cloud?
+ What is Docker Repository?
+ Explain image layers?
+ What best practices are you familiar related to working
+ with containers?
+ How do you manage persistent storage in Docker?
+ How can you connect from the inside of your container to
+ the localhost of your host, where the container runs?
+ How do you copy files from Docker container to the host
+ and vice versa?
+ Git
+ How do you know if a certain directory is a git
+ repository?
+ How to check if a file is tracked and if not, then track it?
+ What is the difference between git pull and git fetch?
+ Explain the following: git directory, working
+ directory and staging area
+ How to resolve git merge conflicts?
+ What is the difference between git reset and git revert?
+ You would like to move forth commit to the top. How
+ would you achieve that?
+In what situations are you using git rebase?
+ What merge strategies are you familiar with?
+ How can you see which changes have done before
+ committing them?
+ How do you revert a specific file to previous commit?
+ How to squash last two commits?
+ What is the .git directory?
+ What is git rebasing?
+ Jenkins
+ What is Jenkins? What have you used it for?
+ What plugins have you used in Jenkins?
+ Have you used Jenkins for CI or CD processes? Can you
+ describe them?
+ What type of jobs are there? Which types have you used?
+ How did you report build results to users? What ways
+ are there to report the results?
+ What is the different between a scripted pipeline to
+ declarative pipeline?
+ Have you written Jenkins scripts? If yes, what for and
+ how they work?
+ Cloud
+ What is Cloud Computing? What is a Cloud Provider?
+ What are the advantages of cloud computing?
+ Explain each of the following and give an example:
+ • IAAS
+ • PAAS
+ • SAAS
+ CI/CD
+ What is Continuous Integration?
+ What is Continuous Deployment?
+ What is Continuous Delivery?
+ Where do you store CI/CD pipelines? Why?
+ Version Control
+ What is Version Control?
+ What is a commit?
+ What is a merge?
+ What is a merge conflict?,,,,,
 191,,,,,
 192,,,,,
 193,,,,,
